@@ -1,6 +1,7 @@
-# This a working docker-compose file from https://github.com/concourse/concourse-docker (as of 22/04/2019).
-# The k3s setup resembles this 3-component-setup, so it is checked in here as a reference. When Concourse 
-# changes the way it works, this file may help to figure out the differences and incorporate the changes.
+# This is a working docker-compose file from https://github.com/concourse/concourse-docker (as of 22/04/2019).
+# The k3s-based concourse deployment recreates the current docker-compose deployment. Therefore, it is kept 
+# here as a reference. When Concourse CI changes the way it works, this file may help to figure out the 
+# differences and incorporate the changes.
 
 version: '3'
 
