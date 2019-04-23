@@ -1,5 +1,5 @@
-.swp
-keys/**
-secrets/**
-run.sh
-stop.sh
+**/keys/
+**/secrets/
+**/run.sh
+**/stop.sh
+**/.swp
