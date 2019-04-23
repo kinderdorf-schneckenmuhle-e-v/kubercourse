@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: concourse-db-pv
+spec:
+  storageClassName: concourse-db-storage
+  capacity:
+    storage: 4G
+  accessModes:
+  - ReadWriteOnce
+  PersistentVolumeReclaimPolicy: Retain
+  local:
+    path: </some/path/to/store/database/content>
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - <some_node>

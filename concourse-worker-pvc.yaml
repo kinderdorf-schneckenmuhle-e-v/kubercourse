@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: concourse-worker-pvc
+spec:
+  storageClassName: concourse-worker-storage
+  resources:
+    requests:
+      storage: 1G
+  accessModes:
+  - ReadWriteOnce

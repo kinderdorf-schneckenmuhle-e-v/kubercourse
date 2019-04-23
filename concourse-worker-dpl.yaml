@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: concourse-worker-deployment
+  labels:
+    app: concourse-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: concourse-worker
+  template:
+    metadata:
+      labels:
+        app: concourse-worker
+    spec:
+      containers:
+      - image: concourse/concourse
+        name: concourse-worker
+        ports:
+        - containerPort: 7777
+          name: garden
+        - containerPort: 7788
+          name: baggageclaim
+        args:
+        - worker
+        securityContext:
+          privileged: true
+        stop_signal: SIGUSR2
+        env:
+        - name: CONCOURSE_TSA_HOST
+          value: concourse-web-service:2222
+        volumeMounts:
+        - name: concourse-worker-keys
+          mountPath: ./concourse-keys
+      volumes:  
+      - name: concourse-worker-keys
+        persistentVolumeClaim:
+          claimName: concourse-worker-pvc

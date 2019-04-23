@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: concourse-web-pv
+spec:
+  storageClassName: concourse-web-storage
+  capacity:
+    storage: 1G
+  accessModes:
+  - ReadWriteOnce
+  PersistentVolumeReclaimPolicy: Retain
+  local:
+    path: </some/path/to/concourse/keys/web>
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - <some_node>
