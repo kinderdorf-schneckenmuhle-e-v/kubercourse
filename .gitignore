@@ -1,0 +1,5 @@
+.swp
+keys/**
+secrets/**
+run.sh
+stop.sh
