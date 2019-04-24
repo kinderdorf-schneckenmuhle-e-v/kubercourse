@@ -10,7 +10,7 @@ spec:
   - ReadWriteOnce
   PersistentVolumeReclaimPolicy: Retain
   local:
-    path: </some/path/to/concourse/keys/worker>
+    path: /var/db/kubernetes/kubercourse/concourse-worker-pv
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -18,4 +18,4 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - <some_node>
+          - docker-desktop
